@@ -11,6 +11,7 @@ export const loadAdmin = async (dispatch) => {
     toast.dismiss(toastId);
     dispatch(setAdmin(res.data.adminEmail));
   } catch (err) {
+    toast.dismiss(toastId);
     dispatch(logout());
   } finally {
     dispatch(setLoading(false)); 

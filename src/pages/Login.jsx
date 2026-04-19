@@ -18,9 +18,9 @@ const LoginPage = () => {
       toast.success("Login successful 🎉");
       window.location.href = "/";
     } catch (err) {
+      toast.dismiss(toastId);
       toast.error(err.response?.data?.message || "Login failed");
     } finally {
-      // 2. Remove the toast immediately
       toast.dismiss(toastId);
     }
   };
