@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const toastId = toast.loading("loading...");
+    const toastId = toast.loading("loading.....");
     try {
       await api.post("/admin/login", { email, password });
       toast.dismiss(toastId);
