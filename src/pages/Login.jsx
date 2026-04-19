@@ -11,6 +11,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    const toastId = toast.loading("loading...");
     try {
       await api.post("/admin/login", { email, password });
 
@@ -18,6 +19,9 @@ const LoginPage = () => {
       window.location.href = "/";
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
+    } finally {
+      // 2. Remove the toast immediately
+      toast.dismiss(toastId);
     }
   };
 

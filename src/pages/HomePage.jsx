@@ -35,12 +35,14 @@ const HomePage = () => {
   const [openAds, setOpenAds] = useState({});
 
   const fetchData = async () => {
+    const toastId = toast.loading("loading...");
     try {
       const res = await api.get("/admin/users");
       setUsers(res.data);
     } catch {
       toast.error("Failed to load data");
     } finally {
+      toast.dismiss(toastId);
       setLoading(false);
     }
   };
