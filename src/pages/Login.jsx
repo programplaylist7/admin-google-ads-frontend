@@ -14,7 +14,7 @@ const LoginPage = () => {
     const toastId = toast.loading("loading...");
     try {
       await api.post("/admin/login", { email, password });
-
+      toast.dismiss(toastId);
       toast.success("Login successful 🎉");
       window.location.href = "/";
     } catch (err) {

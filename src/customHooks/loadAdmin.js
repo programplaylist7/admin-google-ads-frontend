@@ -8,7 +8,7 @@ export const loadAdmin = async (dispatch) => {
     dispatch(setLoading(true)); 
 
     const res = await api.get("/admin/adminDetail");
-
+    toast.dismiss(toastId);
     dispatch(setAdmin(res.data.adminEmail));
   } catch (err) {
     dispatch(logout());
