@@ -4,17 +4,14 @@ import { logout, setAdmin, setLoading } from "../redux/adminSlice";
 
 export const loadAdmin = async (dispatch) => {
   try {
-    const toastId = toast.loading("Loading...");
-    dispatch(setLoading(true)); 
+    dispatch(setLoading(true));
 
     const res = await api.get("/admin/adminDetail");
-    toast.dismiss(toastId);
+
     dispatch(setAdmin(res.data.adminEmail));
   } catch (err) {
-    toast.dismiss(toastId);
     dispatch(logout());
   } finally {
-    dispatch(setLoading(false)); 
-    toast.dismiss(toastId);
+    dispatch(setLoading(false));
   }
 };
